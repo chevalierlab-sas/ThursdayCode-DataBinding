@@ -2,6 +2,7 @@ package lab.chevalier.databindingexample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import lab.chevalier.databindingexample.databinding.ActivityMainBinding
 
@@ -21,10 +22,14 @@ class MainActivity : AppCompatActivity() {
     private fun increase(){
         num++
         binding.tvScore.text = num.toString()
+        if (num > -1) binding.tvScore.setTextColor(ContextCompat.getColor(this, R.color.colorGreen))
+        else binding.tvScore.setTextColor(ContextCompat.getColor(this, R.color.colorRed))
     }
 
     private fun decrease(){
         num--
         binding.tvScore.text = num.toString()
+        if (num <= -1) binding.tvScore.setTextColor(ContextCompat.getColor(this, R.color.colorRed))
+        else binding.tvScore.setTextColor(ContextCompat.getColor(this, R.color.colorGreen))
     }
 }
